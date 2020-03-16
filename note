@@ -1,1 +1,15 @@
 npm install admin-lte@v3.0.0-alpha.2 --save
+
+
+
+
+ssh-keygen -t rsa -b 4096 -C "yasir.nss@gmail.com"
+
+git init
+git add *
+git commit -m "Upload last updated Mais project to github"
+
+create new repo. in github
+
+git remote add origin git@github.com:YaserNSS/Mais.git
+git push -u origin master
