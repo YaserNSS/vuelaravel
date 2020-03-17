@@ -10,6 +10,28 @@ git add *
 git commit -m "Upload last updated Mais project to github"
 
 create new repo. in github
+git pull origin master --rebase
 
 git remote add origin git@github.com:YaserNSS/Mais.git
+
 git push -u origin master
+
+
+
+then in each lecture
+git add *
+git commit -m "Upload last updated Mais project to github"
+git push -u origin master
+
+
+lec 3:
+npm install @fortawesome/fontawesome-free
+
+in app.css file add below
+//font awsome
+$fa-font-path: "../webfonts";
+//font awsome
+@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '~@fortawesome/fontawesome-free/scss/solid.scss';
+@import '~@fortawesome/fontawesome-free/scss/brands.scss';
+
