@@ -38,3 +38,5 @@ $fa-font-path: "../webfonts";
 Lec 5 :
 npm install vue-router
 
+lec 10:
+npm i axios vform
