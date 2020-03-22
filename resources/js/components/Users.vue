@@ -17,29 +17,33 @@
                 <table class="table table-hover">
                   <thead>
                     <tr>
-                      <th>ID</th>
-                      <th>Name</th>
-                      <th>Email</th>
-                      <th>Type</th>
-                      <th>Modify</th>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Type</th>
+                        <th>Registered At</th>
+                        <th>Modify</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>183</td>
-                      <td>John Doe</td>
-                      <td>11-7-2014</td>
-                      <td><span class="tag tag-success">Approved</span></td>
-                      <td>
-                          <a href="">
-                              <i class="fa fa-edit text-primary"></i>
-                          </a>
-                          /
-                          <a href="">
-                              <i class="fa fa-trash text-danger"></i>
-                          </a>
+                    <tr v-for="user in users.data" :key="user.id">
 
-                      </td>
+                        <td>{{user.id}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.type | upText}}</td>
+                        <td>{{user.created_at | myDate}}</td>
+
+                        <td>
+                            <a href="#" @click="editModal(user)">
+                                <i class="fa fa-edit blue"></i>
+                            </a>
+                            /
+                            <a href="#" @click="deleteUser(user.id)">
+                                <i class="fa fa-trash red"></i>
+                            </a>
+
+                        </td>
                     </tr>
                   </tbody>
                 </table>
@@ -116,7 +120,7 @@
         data() {
             return {
                 //editmode: false,
-                //users : {},
+                users : {},
                 form: new Form({
                     id:'',
                     name : '',
@@ -129,24 +133,15 @@
             }
         },
         methods: {
+            loadUsers(){
+                    axios.get("api/user").then(({ data }) => (this.users = data));
+            },
             createUser(){
-                    //this.$Progress.start();
                     this.form.post('api/user')
-                    // .then(()=>{
-                    //     Fire.$emit('AfterCreate');
-                    //     $('#addNew').modal('hide')
-                    //     toast({
-                    //         type: 'success',
-                    //         title: 'User Created in successfully'
-                    //         })
-                    //     this.$Progress.finish();
-                    // })
-                    // .catch(()=>{
-                    // })
                 }
         },
-        mounted() {
-            console.log('Component mounted.')
+        created() {
+            this.loadUsers();
         }
     }
 </script>
