@@ -60,7 +60,7 @@
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form @submit.prevent="editmode ? updateUser() : createUser()">
+            <form @submit.prevent="createUser">
                 <div class="modal-body">
                                         <div class="form-group">
                             <input v-model="form.name" type="text" name="name"
@@ -115,8 +115,8 @@
     export default {
         data() {
             return {
-                editmode: false,
-                users : {},
+                //editmode: false,
+                //users : {},
                 form: new Form({
                     id:'',
                     name : '',
@@ -130,19 +130,19 @@
         },
         methods: {
             createUser(){
-                    this.$Progress.start();
+                    //this.$Progress.start();
                     this.form.post('api/user')
-                    .then(()=>{
-                        Fire.$emit('AfterCreate');
-                        $('#addNew').modal('hide')
-                        toast({
-                            type: 'success',
-                            title: 'User Created in successfully'
-                            })
-                        this.$Progress.finish();
-                    })
-                    .catch(()=>{
-                    })
+                    // .then(()=>{
+                    //     Fire.$emit('AfterCreate');
+                    //     $('#addNew').modal('hide')
+                    //     toast({
+                    //         type: 'success',
+                    //         title: 'User Created in successfully'
+                    //         })
+                    //     this.$Progress.finish();
+                    // })
+                    // .catch(()=>{
+                    // })
                 }
         },
         mounted() {

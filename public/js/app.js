@@ -2140,8 +2140,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      editmode: false,
-      users: {},
+      //editmode: false,
+      //users : {},
       form: new Form({
         id: '',
         name: '',
@@ -2155,19 +2155,18 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     createUser: function createUser() {
-      var _this = this;
-
-      this.$Progress.start();
-      this.form.post('api/user').then(function () {
-        Fire.$emit('AfterCreate');
-        $('#addNew').modal('hide');
-        toast({
-          type: 'success',
-          title: 'User Created in successfully'
-        });
-
-        _this.$Progress.finish();
-      })["catch"](function () {});
+      //this.$Progress.start();
+      this.form.post('api/user'); // .then(()=>{
+      //     Fire.$emit('AfterCreate');
+      //     $('#addNew').modal('hide')
+      //     toast({
+      //         type: 'success',
+      //         title: 'User Created in successfully'
+      //         })
+      //     this.$Progress.finish();
+      // })
+      // .catch(()=>{
+      // })
     }
   },
   mounted: function mounted() {
@@ -38742,7 +38741,7 @@ var render = function() {
                   on: {
                     submit: function($event) {
                       $event.preventDefault()
-                      _vm.editmode ? _vm.updateUser() : _vm.createUser()
+                      return _vm.createUser($event)
                     }
                   }
                 },
