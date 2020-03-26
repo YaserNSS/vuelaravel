@@ -2171,7 +2171,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.$Progress.start();
       this.form.post('api/user').then(function () {
-        //  Fire.$emit('AfterCreate');
+        Fire.$emit('AfterCreate');
         $('#addNew').modal('hide');
         toast({
           type: 'success',
@@ -2183,7 +2183,12 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
+    var _this3 = this;
+
     this.loadUsers();
+    Fire.$on('AfterCreate', function () {
+      _this3.loadUsers();
+    });
   }
 });
 
@@ -74955,6 +74960,7 @@ var toast = sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.mixin({
   timer: 3000
 });
 window.toast = toast;
+window.Fire = new Vue();
 window.Form = vform__WEBPACK_IMPORTED_MODULE_1__["Form"];
 Vue.component(vform__WEBPACK_IMPORTED_MODULE_1__["HasError"].name, vform__WEBPACK_IMPORTED_MODULE_1__["HasError"]);
 Vue.component(vform__WEBPACK_IMPORTED_MODULE_1__["AlertError"].name, vform__WEBPACK_IMPORTED_MODULE_1__["AlertError"]); //importing vue route
