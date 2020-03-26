@@ -2144,7 +2144,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      //editmode: false,
+      editmode: false,
       users: {},
       form: new Form({
         id: '',
@@ -2158,6 +2158,17 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    editModal: function editModal(user) {
+      this.editmode = true;
+      this.form.reset();
+      $('#addNew').modal('show');
+      this.form.fill(user);
+    },
+    newModal: function newModal() {
+      this.editmode = false;
+      this.form.reset();
+      $('#addNew').modal('show');
+    },
     deleteUser: function deleteUser(id) {
       var _this = this;
 
@@ -59767,7 +59778,7 @@ var staticRenderFns = [
             attrs: {
               type: "button",
               "data-toggle": "modal",
-              "data-target": "#addNew"
+              "data-target": "#newModal"
             }
           },
           [_vm._v("\n                    Add New\n                ")]

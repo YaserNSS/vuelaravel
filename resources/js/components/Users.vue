@@ -7,7 +7,7 @@
                 <h3 class="card-title">Users Table</h3>
 
                 <div class="card-tools">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addNew">
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#newModal">
                         Add New
                     </button>
                 </div>
@@ -119,7 +119,7 @@
     export default {
         data() {
             return {
-                //editmode: false,
+                editmode: false,
                 users : {},
                 form: new Form({
                     id:'',
@@ -133,6 +133,17 @@
             }
         },
         methods:{
+            editModal(user){
+                this.editmode = true;
+                this.form.reset();
+                $('#addNew').modal('show');
+                this.form.fill(user);
+            },
+            newModal(){
+                this.editmode = false;
+                this.form.reset();
+                $('#addNew').modal('show');
+            },
             deleteUser(id){
                 swal.fire({
                     title: 'Are you sure?',
