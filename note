@@ -70,3 +70,7 @@ in lec 43
 
 in controller
 $this->authorize('isAdmin');
+
+lec 44 front end acl
+create gate.js file
+
