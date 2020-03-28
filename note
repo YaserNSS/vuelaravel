@@ -64,3 +64,9 @@ goto for view
                 </router-link>
         </li>
           @endcan
+
+
+in lec 43
+
+in controller
+$this->authorize('isAdmin');
