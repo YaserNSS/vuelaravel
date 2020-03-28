@@ -2153,57 +2153,13 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     console.log('Component mounted.');
   },
-  methods: {
-    getProfilePhoto: function getProfilePhoto() {
-      var photo = this.form.photo.length > 200 ? this.form.photo : "img/profile/" + this.form.photo;
-      return photo;
-    },
-    updateInfo: function updateInfo() {
-      var _this = this;
-
-      this.$Progress.start();
-
-      if (this.form.password == '') {
-        this.form.password = undefined;
-      }
-
-      this.form.put('api/profile').then(function () {
-        Fire.$emit('AfterCreate');
-
-        _this.$Progress.finish();
-      })["catch"](function () {
-        _this.$Progress.fail();
-      });
-    },
-    updateProfile: function updateProfile(e) {
-      var _this2 = this;
-
-      var file = e.target.files[0];
-      var reader = new FileReader();
-      var limit = 1024 * 1024 * 2;
-
-      if (file['size'] > limit) {
-        swal.fire({
-          type: 'error',
-          title: 'Oops...',
-          text: 'You are uploading a large file'
-        });
-        return false;
-      }
-
-      reader.onloadend = function (file) {
-        _this2.form.photo = reader.result;
-      };
-
-      reader.readAsDataURL(file);
-    }
-  },
+  methods: {},
   created: function created() {
-    var _this3 = this;
+    var _this = this;
 
     axios.get("api/profile").then(function (_ref) {
       var data = _ref.data;
-      return _this3.form.fill(data);
+      return _this.form.fill(data);
     });
   }
 });
@@ -60262,24 +60218,19 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "widget-user-image" }, [
-            _c("img", {
-              staticClass: "img-circle",
-              attrs: { src: _vm.getProfilePhoto(), alt: "User Avatar" }
-            })
-          ]),
+          _vm._m(0),
           _vm._v(" "),
-          _vm._m(0)
+          _vm._m(1)
         ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-12" }, [
         _c("div", { staticClass: "card" }, [
-          _vm._m(1),
+          _vm._m(2),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _c("div", { staticClass: "tab-content" }, [
-              _vm._m(2),
+              _vm._m(3),
               _vm._v(" "),
               _c(
                 "div",
@@ -60542,6 +60493,14 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "widget-user-image" }, [
+      _c("img", { staticClass: "img-circle", attrs: { alt: "User Avatar" } })
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

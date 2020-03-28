@@ -45,6 +45,8 @@ class UserController extends Controller
         ]);
     }
 
+
+
     /**
      * Display the specified resource.
      *
@@ -54,6 +56,11 @@ class UserController extends Controller
     public function show($id)
     {
         //
+    }
+
+    public function profile()
+    {
+        return auth('api')->user();
     }
 
     /**

@@ -40,3 +40,27 @@ npm install vue-router
 
 lec 10:
 npm i axios vform
+
+1ec 42 Authenctication
+in authservice provder
+        Gate::define('isAdmin',function($user){
+            return $user->type === 'admin';
+        });
+        Gate::define('isAuthor',function($user){
+            return $user->type === 'author';
+        });
+        Gate::define('isUser',function($user){
+            return $user->type === 'user';
+        });
+
+goto for view
+          @can('isAdmin')
+          <li class="nav-item">
+                <router-link to="/profile" class="nav-link">
+                    <i class="nav-icon fas fa-user text-warning"></i>
+                    <p>
+                        Developer
+                    </p>
+                </router-link>
+        </li>
+          @endcan

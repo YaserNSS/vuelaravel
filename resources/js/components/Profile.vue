@@ -21,7 +21,7 @@
                     <h5 class="widget-user-desc">{{this.form.type}}</h5>
                 </div>
                 <div class="widget-user-image">
-                    <img class="img-circle" :src="getProfilePhoto()" alt="User Avatar">
+                    <img class="img-circle"  alt="User Avatar">
                 </div>
                 <div class="card-footer">
                     <div class="row">
@@ -162,41 +162,7 @@
             console.log('Component mounted.')
         },
         methods:{
-            getProfilePhoto(){
-                let photo = (this.form.photo.length > 200) ? this.form.photo : "img/profile/"+ this.form.photo ;
-                return photo;
-            },
-            updateInfo(){
-                this.$Progress.start();
-                if(this.form.password == ''){
-                    this.form.password = undefined;
-                }
-                this.form.put('api/profile')
-                .then(()=>{
-                     Fire.$emit('AfterCreate');
-                    this.$Progress.finish();
-                })
-                .catch(() => {
-                    this.$Progress.fail();
-                });
-            },
-            updateProfile(e){
-                let file = e.target.files[0];
-                let reader = new FileReader();
-                let limit = 1024 * 1024 * 2;
-                if(file['size'] > limit){
-                    swal.fire({
-                        type: 'error',
-                        title: 'Oops...',
-                        text: 'You are uploading a large file',
-                    })
-                    return false;
-                }
-                reader.onloadend = (file) => {
-                    this.form.photo = reader.result;
-                }
-                reader.readAsDataURL(file);
-            }
+
         },
         created() {
             axios.get("api/profile")
