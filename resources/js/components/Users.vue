@@ -49,6 +49,9 @@
                 </table>
               </div>
               <!-- /.card-body -->
+              <div class="card-footer">
+                  <pagination :data="users" @pagination-change-page="getResults"></pagination>
+              </div>
             </div>
             <!-- /.card -->
           </div>
@@ -137,6 +140,12 @@
             }
         },
         methods:{
+            getResults(page = 1) {
+            axios.get('api/user?page=' + page)
+                .then(response => {
+                    this.users = response.data;
+                });
+                },
             updateUser(){
                 this.$Progress.start();
                 // console.log('Editing data');
